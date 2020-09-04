@@ -15,8 +15,8 @@ export default {
         state.newTask = task.body
     },
     removeTask(state, task){
-    var tasks = state.tasks
-    tasks.splice(tasks.indexOf(task), 1)
+        var tasks = state.tasks
+        tasks.splice(tasks.indexOf(task), 1)
 
     },
     completeTask(state, task) {

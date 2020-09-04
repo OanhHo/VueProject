@@ -1,6 +1,8 @@
 <template>
   <div id="list-tasks">
     <div class="panel panel-default">
+      <hr>
+      <h2> Store with vuex</h2>
       <div class="panel-heading my-task">
         <h3 class="panel-title">My Tasks<span class="task-length" v-if="tasks.length > 0">{{tasks.length}}</span></h3>
       </div>
@@ -9,8 +11,7 @@
             name="custom-classes-transition"
             enter-active-class="animated tada"
             leave-active-class="animated bounceOutRight"
-            is="transition-group"
-        >
+            is="transition-group">
           <li class="list-group-item" v-for="(task, index) in tasks" v-bind:key="index">
             <img src="http://lazi.vn/files/large/5a64450874df215" alt="" width="53">
             {{task.body}}
@@ -55,7 +56,11 @@ export default{
 }
 </script>
 <style>
+.panel-default{
+  margin-top: 50px;
+}
 .btn-group{
   float: right;
 }
+
 </style>

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { extend, localize } from "vee-validate";
-import { required, email, min, max } from "vee-validate/dist/rules";
+import { required, email, min, max} from "vee-validate/dist/rules";
 import vi from "vee-validate/dist/locale/vi.json";
 import en from "vee-validate/dist/locale/en.json";
 
@@ -12,18 +12,35 @@ extend("email", email);
 
 // Install min rule.
 extend("min", min);
+
 //install max rule
 extend("max",max);
 
+//install positive rule
+extend('positive', {
+    validate: value => {
+        return value >= 0;
+    },
+    message: 'The {_field_} field must be a positive number'
+});
 
+//minmax rule
+extend('minmax', {
+    validate(minmax, { min, max }) {
+        return minmax.length >= min && minmax.length <= max;
+    },
+    params: ['min', 'max'],
+    message: 'Field is not a valid'
+});
 
-// Install English and Arabic localizations.
+// Install English and Vietnam localizations.
 localize({
     en: {
         messages: en.messages,
         names: {
             email: "E-mail Address",
             password: "Password",
+            age: "age",
             phone: "Phone Number"
         },
         fields: {
@@ -31,7 +48,7 @@ localize({
                 min: "{_field_} is too short, you want to get hacked?"
             },
             phone: {
-                max: "Phone number of 10 mumber"
+                max: "{_field_} of 10 mumber"
             }
         }
     },
@@ -40,14 +57,15 @@ localize({
         names: {
             email: "Địa chỉ email",
             password: "Mật khẩu",
+            age:"Tuổi",
             phone: "Số điện thoại"
         },
         fields: {
             password: {
-                min: "Mật khẩu quá ngắn, bạn có muốn thay đổi?"
+                min: "{_field_} quá ngắn, bạn có muốn thay đổi?"
             },
             phone: {
-                max: "Số điện thoại gồm 10 số"
+                max: "{_field_} gồm 10 số"
             }
         }
     }
@@ -64,5 +82,6 @@ Object.defineProperty(Vue.prototype, "locale", {
     set(val) {
         LOCALE = val;
         localize(val);
+        console.log(localize(val));
     }
 });

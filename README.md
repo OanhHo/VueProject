@@ -1,23 +1,27 @@
 # project-vue
 
-## Project setup
+## Install nvm 
+
+[Installing Node Using the Node Version Manager](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04).
+
+## Move into other node version
 ```
-yarn install
+nvm use v12.18.3
+```
+## Install vue/cli
+```
+npm install -g @vue/cli
+npm update -g @vue/cli
 ```
 
-### Compiles and hot-reloads for development
+## Create vue project
 ```
-yarn serve
+vue create VueProject
 ```
-
-### Compiles and minifies for production
+### Build and run project
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
+npm run build
+npm run serve
 ```
 
 ### Customize configuration

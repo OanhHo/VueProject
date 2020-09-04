@@ -2,7 +2,7 @@
   <div id="app" >
     <HeaderComponent v-on:changeLang="changeLanguage" :languages="languages" />
     <LeftSidebar />
-    <ContentComponent />
+<!--    <ContentComponent />-->
     <div class="row-task">
       <div class="col-md-6"><ListTask></ListTask></div>
       <div class="col-md-6"><CompletedTask></CompletedTask></div>
@@ -19,7 +19,7 @@
 
 import HeaderComponent from './components/HeaderComponent'
 import LeftSidebar from './components/LeftSidebarComponent'
-import ContentComponent from './components/DashboardWrapperComponent'
+// import ContentComponent from './components/DashboardWrapperComponent'
 import FooterComponent from './components/FooterComponent'
 import GetTask from './components/GetTask.vue'
 import ListTask from './components/ListTask.vue'
@@ -33,7 +33,7 @@ export default {
   components: {
     HeaderComponent,
     LeftSidebar,
-    ContentComponent,
+    // ContentComponent,
     FooterComponent,
     GetTask,
     ListTask,

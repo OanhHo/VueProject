@@ -2,7 +2,7 @@
   <div class="form-vadidate">
     <ValidationObserver ref="form">
     <hr>
-      <h2 class="head-h2">Integrating i18n with VeeValidate: vue-i18n</h2>
+      <h2 class="head-h2">VeeValidate: vue-i18n</h2>
       <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
         <input type="text" v-model="email" placeholder="type some email" class="input">
         <span class="span-error">{{ errors[0] }}</span>
@@ -13,13 +13,21 @@
         <span class="span-error">{{ errors[0] }}</span>
       </ValidationProvider>
 
-      <ValidationProvider name="password" rules="required|min:8,12" v-slot="{ errors }">
+      <ValidationProvider name="age" rules="required|positive" v-slot="{ errors }">
+        <input type="age" v-model="age" placeholder="type your old" class="input">
+        <span class="span-error">{{ errors[0] }}</span>
+      </ValidationProvider>
+
+      <ValidationProvider name="password" rules="required|min:8" v-slot="{ errors }">
         <input type="password" v-model="password" placeholder="type password" class="input">
         <span class="span-error">{{ errors[0] }}</span>
       </ValidationProvider>
     </ValidationObserver>
 
-    <button @click="switchLoc" class="btn btn-i18n">Switch Locale</button>
+    <button @click="switchLoc" class="btn ">Switch Locale</button>
+    <br>
+    <button @click="submit" class="btn">Submit</button>
+
   </div>
 </template>
 
@@ -35,20 +43,24 @@ export default {
   data: () => ({
     email: "",
     password: "",
-    phone: ""
+    phone: "",
+    age: "",
+    minmax: ""
   }),
   methods: {
-    async submit() {
-      console.log("email submitted!");
+    submit() {
+      alert('Your Information \n Email: '+ this.email + '\nPhone: '+this.phone+'\n Age: '+this.age);
     },
     switchLoc() {
       // switch the locale.
       this.locale = this.locale === "en" ? "vi" : "en";
+      console.log(this.locale);
       // you could also import 'localize' and call it.
       // localize('vi');
 
       // re-validate to re-generate the messages.
       this.$refs.form.validate();
+      console.log(this.$refs);
     }
   }
 };
@@ -66,5 +78,8 @@ export default {
 .input {
   margin-top: 20px;
   width: 300px;
+}
+.btn{
+  margin-top: 20px;
 }
 </style>
