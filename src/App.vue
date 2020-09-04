@@ -8,8 +8,10 @@
       <div class="col-md-6"><CompletedTask></CompletedTask></div>
     </div>
     <GetTask></GetTask>
+    <FormComponent></FormComponent>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">\
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <FooterComponent />
   </div>
 </template>
 
@@ -18,9 +20,12 @@
 import HeaderComponent from './components/HeaderComponent'
 import LeftSidebar from './components/LeftSidebarComponent'
 import ContentComponent from './components/DashboardWrapperComponent'
+import FooterComponent from './components/FooterComponent'
 import GetTask from './components/GetTask.vue'
 import ListTask from './components/ListTask.vue'
 import CompletedTask from './components/CompletedTask.vue'
+import FormComponent from './components/FormComponent.vue'
+
 import { i18n } from './i18n'
 
 export default {
@@ -29,9 +34,11 @@ export default {
     HeaderComponent,
     LeftSidebar,
     ContentComponent,
+    FooterComponent,
     GetTask,
     ListTask,
-    CompletedTask
+    CompletedTask,
+    FormComponent
   },
   data() {
     return {

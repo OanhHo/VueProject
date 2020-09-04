@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue Template Form Validation</title>
+</head>
+<body>
+</body>
+<div>
+    <ValidationProvider rules="min:3" v-slot="{ errors }">
+        <input v-model="value" type="text">
+        <span>{{ errors[0] }}</span>
+    </ValidationProvider>
+
+    <ValidationProvider rules="min:6" v-slot="{ errors }">
+        <input v-model="value" type="text">
+        <span>{{ errors[0] }}</span>
+    </ValidationProvider>
+</div>
+<script>
+    import { extend } from 'vee-validate';
+
+    extend('minmax', {
+        validate(value, args) {
+            const length = value.length;
+
+            return length >= args.min && length <= args.max;
+        },
+        params: ['min', 'max']
+    });
+</script>
+</html>
